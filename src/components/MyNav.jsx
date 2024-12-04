@@ -45,9 +45,13 @@ const NetflixNavbar = ({ onSearch }) => {
             <a href="#" className="nav-link active text-light">
               Home
             </a>
-            <a href="#" className="nav-link fw-bold text-light">
+            <Navbar.Brand
+              className="nav-link fw-bold text-light"
+              as={Link}
+              to="/"
+            >
               TV Shows
-            </a>
+            </Navbar.Brand>
             <a href="#" className="nav-link text-light">
               Movies
             </a>

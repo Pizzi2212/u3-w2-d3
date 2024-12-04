@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Carousel } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const FilmCarousel1 = ({ searchQuery }) => {
   const [films1, setFilms1] = useState([])
@@ -16,6 +17,7 @@ const FilmCarousel1 = ({ searchQuery }) => {
         }
       })
       .then((data) => {
+        console.log('Dati della ricerca:', data)
         if (data.Search) {
           setFilms1(data.Search)
         }
@@ -24,6 +26,7 @@ const FilmCarousel1 = ({ searchQuery }) => {
         console.error('Errore!', e)
       })
   }, [searchQuery])
+
   const chunks = []
   for (let i = 0; i < films1.length; i += 6) {
     chunks.push(films1.slice(i, i + 6))
@@ -47,12 +50,19 @@ const FilmCarousel1 = ({ searchQuery }) => {
                   lg={2}
                   className="mb-4"
                 >
-                  <img
-                    className="img-fluid custom-image"
-                    src={film.Poster}
-                    alt=""
-                    style={{ objectFit: 'cover' }}
-                  />
+                  <Link
+                    to={{
+                      pathname: `/details/${film.imdbID}`,
+                      state: { film },
+                    }}
+                  >
+                    <img
+                      className="img-fluid custom-image"
+                      src={film.Poster}
+                      alt={`Poster di ${film.Title}`}
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>

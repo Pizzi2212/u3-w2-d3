@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Row, Col, Carousel, Spinner } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class FilmCarousel2 extends Component {
   state = {
@@ -85,12 +86,14 @@ class FilmCarousel2 extends Component {
                   lg={2}
                   className="mb-4"
                 >
-                  <img
-                    className="img-fluid custom-image"
-                    src={film.Poster}
-                    alt="Film Poster"
-                    style={{ objectFit: 'cover' }}
-                  />
+                  <Link to={'/details/' + film.imdbID}>
+                    <img
+                      className="img-fluid custom-image"
+                      src={film.Poster}
+                      alt={'img di' + film.Poster}
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>

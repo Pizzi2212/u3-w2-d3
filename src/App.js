@@ -8,7 +8,9 @@ import FilmCarousel3 from './components/MainComponent3.jsx'
 import EditProfile from './components/Edit.jsx'
 import Settings from './components/Settings.jsx'
 import './App.css'
+import { Row, Col } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Details from './components/Details.jsx'
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -34,6 +36,16 @@ function App() {
                   <FilmCarousel2 />
                   <FilmCarousel3 />
                 </>
+              }
+            />
+            <Route
+              path="/details/:filmId"
+              element={
+                <Row className="justify-content-center mt-3">
+                  <Col xs={12} md={8} lg={6}>
+                    <Details />
+                  </Col>
+                </Row>
               }
             />
             <Route path="/edit" element={<EditProfile />} />
